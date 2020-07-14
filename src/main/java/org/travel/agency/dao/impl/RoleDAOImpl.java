@@ -32,4 +32,10 @@ public class RoleDAOImpl implements RoleDAO {
                     .uniqueResultOptional();
     }
 
+    @Override
+    public void save(Role role) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(role);
+    }
+
 }
