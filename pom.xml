@@ -21,16 +21,19 @@
     <mysql.connector.version>8.0.17</mysql.connector.version>
     <c3po.version>0.9.5.2</c3po.version>
     <sl4j.version>2.7</sl4j.version>
+    <junit.version>4.13</junit.version>
   </properties>
 
   <dependencies>
 
+    <!-- https://mvnrepository.com/artifact/junit/junit -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+
 
     <!-- Spring Dependencies -->
 
@@ -139,6 +142,20 @@
       <version>${sl4j.version}</version>
     </dependency>
 
+    <!-- TESTING -->
+
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.4.194</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -176,5 +193,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>9</source>
+                  <target>9</target>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
 </project>
