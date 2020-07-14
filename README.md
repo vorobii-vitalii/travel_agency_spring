@@ -1,13 +1,14 @@
 # **Travel Agency Spring application**
 
 Stack of technologies:
-1. Spring Framework (Spring MVC, Spring Security, Spring Core)
+1. Spring Framework (Spring MVC, Spring Security, Spring Core, Spring Test)
 2. Hibernate
 3. MySQL
 4. SLF4J
 5. Templating engine - JSP/JSTL (+ Twitter Bootstrap library)
 6. Lombok (to avoid boiler-plate code)
 7. Maven
+8. jUnit 4
 
 There are three roles in application - customer, manager and admin.
 
