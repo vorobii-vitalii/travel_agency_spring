@@ -2,9 +2,12 @@ package org.travel.agency.config;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -19,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 @EnableWebMvc
 @ComponentScan("org.travel.agency")
+@PropertySource({"classpath:validation_en_US.properties"})
 @AllArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
@@ -58,6 +62,16 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/images/**")
                 .addResourceLocations("/WEB-INF/images/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
+    }
+
+    @Bean
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasenames("classpath:/validation");
+        messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setCacheSeconds((int) TimeUnit.HOURS.toSeconds(1));
+        messageSource.setFallbackToSystemLocale(false);
+        return messageSource;
     }
 
 }
