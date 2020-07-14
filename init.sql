@@ -42,3 +42,21 @@ create table if not exists `user_roles` (
             on update restrict on delete cascade
 );
 
+create table if not exists `countries` (
+    `id` int primary key auto_increment,
+    `name` varchar(100) not null
+);
+
+create table if not exists `orders` (
+  `id` int primary key auto_increment,
+  `customer_id` int not null,
+  `room_id` int not null,
+  `date_from` date not null,
+  `date_till` date not null,
+      foreign key (customer_id)
+          references users(`id`)
+          on update restrict on delete cascade,
+      foreign key (room_id)
+          references rooms(`id`)
+          on update restrict on delete cascade
+);
