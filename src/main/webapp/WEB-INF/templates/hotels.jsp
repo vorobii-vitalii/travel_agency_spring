@@ -4,44 +4,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link href="<c:url value="/resources/bootstrap.min.css"/>" rel="stylesheet" type="text/css"/>
-    <title>Hotels</title>
-</head>
+<html>
+<jsp:include page="sections/head.jsp">
+    <jsp:param name="titleName" value="Hotels"/>
+</jsp:include>
 <body>
 <div class="container-fluid">
+
+    <jsp:include page="sections/navbar.jsp"/>
 
     <div class="row m-2">
         <h1 class="text-center">Hotel Management</h1>
     </div>
 
-    <!-- SEARCH COMPONENT START -->
-    <div class="row">
-        <form class="card card-sm border-light">
-            <div class="card-body row no-gutters align-items-center">
-                <div class="col-auto">
-                    <i class="fas fa-search h4 text-body"></i>
-                </div>
-                <div class="col">
-                    <input
-                            class="form-control form-control-lg form-control-borderless"
-                            type="search"
-                            placeholder="Search topics or keywords"
-                    >
-                </div>
-                <div class="col-auto">
-                    <button class="btn btn-lg btn-success" type="submit">Search</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <!-- SEARCH COMPONENT END -->
-
-
     <div class="row mt-4 mb-4">
         <h3>
-            <a href="<c:url value="/hotels/new" />" class="btn btn-success btn-sm" >Add Hotel</a>
+            <a href="<c:url value="/hotels/new" />" class="btn btn-success btn-lg" >Add Hotel</a>
         </h3>
     </div>
 
