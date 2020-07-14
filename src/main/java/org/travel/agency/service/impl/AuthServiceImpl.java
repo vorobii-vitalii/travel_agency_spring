@@ -41,6 +41,7 @@ public class AuthServiceImpl implements AuthService {
         } else {
             attachRoleToUser(role, user);
         }
+        userService.save(user);
     }
 
     private boolean userHasRole(User user, UserRoles roleToCheck) {
@@ -65,8 +66,8 @@ public class AuthServiceImpl implements AuthService {
 
     private void attachRoleToUser(UserRoles role, User user) {
         Set<Role> roles = user.getRoles();
-        Role customerRole = roleService.getByName(role.toString());
-        roles.add(customerRole);
+        Role desiredRole = roleService.getByName(role.toString());
+        roles.add(desiredRole);
         user.setRoles(roles);
     }
 }
