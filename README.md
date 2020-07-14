@@ -6,9 +6,10 @@ Stack of technologies:
 3. MySQL
 4. SLF4J
 5. Templating engine - JSP/JSTL (+ Twitter Bootstrap library)
-6. Lombok (to avoid boiler-plate code)
+6. Lombok (to get rid of boiler-plate code)
 7. Maven
 8. jUnit 4
+9. H2 in-memory database (just for testing)
 
 There are three roles in application - customer, manager and admin.
 
