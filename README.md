@@ -35,4 +35,6 @@ It's an example of **_db.properties_** file that _must_ be created in the same p
 
 3. Just for convenience I have added TestDBConnection class, that expects JDBC url, username and password to verify connection.
 
+4. If you wish, you can execute data.sql script as well to prepopulate roles and countries in a database.
+
 Application has been successfully run and manually tested using Tomcat server.
