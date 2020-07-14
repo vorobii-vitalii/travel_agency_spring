@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface RoomDAO {
     List<Room> findAllByHotelId(Long hotelId);
     Optional<Room> findById(Long id);
-    List<Room> findAllByHotelIdAndDateBetween(Long hotelId, LocalDate dateFrom, LocalDate dateTill);
+    List<Room> findAllByHotelIdAndDateBeyond(Long hotelId, LocalDate dateFrom, LocalDate dateTill);
     boolean havingOrdersDuringDateBetween(Long roomId, LocalDate dateFrom, LocalDate dateTill);
     void save(Room room);
     void deleteById(Long id);

@@ -30,7 +30,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<Room> getAllByHotelIdAndDateBeyond(Long hotelId, LocalDate fromDate, LocalDate tillDate) {
-        List<Room> roomsByHotelIdAndDateBeyond = roomDAO.findAllByHotelIdAndDateBetween(hotelId, fromDate, tillDate);
+        List<Room> roomsByHotelIdAndDateBeyond = roomDAO.findAllByHotelIdAndDateBeyond(hotelId, fromDate, tillDate);
         log.info("Fetched available rooms from {} till {} in hotel by id {}", fromDate, tillDate, hotelId);
         return roomsByHotelIdAndDateBeyond;
     }
