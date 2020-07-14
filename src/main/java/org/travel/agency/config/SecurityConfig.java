@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,15 +14,18 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.travel.agency.constants.UserRoles;
 
 @Configuration
 @EnableWebSecurity
-@PropertySource({"classpath:secret.properties"})
+@PropertySource({"classpath:security.properties"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService customUserDetailsService;
+    private final Environment env;
 
-    public SecurityConfig(@Qualifier("customUserDetailsService") UserDetailsService customUserDetailsService) {
+    public SecurityConfig(@Qualifier("customUserDetailsService") UserDetailsService customUserDetailsService, Environment env) {
         this.customUserDetailsService = customUserDetailsService;
+        this.env = env;
     }
 
     @Override
@@ -31,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/register", "errors/**")
                     .permitAll()
-                .antMatchers("/hotels/**", "/rooms/**").permitAll()
+                .antMatchers("/hotels/**", "/rooms/**", "/management/**").hasRole(UserRoles.MANAGER.toString())
+                .antMatchers("/admin/**").hasIpAddress(env.getRequiredProperty("user.ip_address"))
                 .anyRequest()
                     .authenticated()
                 .and()
