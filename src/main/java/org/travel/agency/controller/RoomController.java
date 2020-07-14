@@ -2,16 +2,19 @@ package org.travel.agency.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.travel.agency.entity.Room;
 import org.travel.agency.service.RoomService;
+import org.travel.agency.validation.RoomValidator;
 
 @Controller
 @AllArgsConstructor
 @RequestMapping("/rooms")
 public class RoomController {
     private final RoomService roomService;
+    private final RoomValidator roomValidator;
 
     @GetMapping("/{hotelId}")
     public ModelAndView getRoomsByHotelId(@PathVariable Long hotelId) {
@@ -29,9 +32,12 @@ public class RoomController {
         return redirectToHotelRooms(deletedRoom.getHotelId());
     }
 
-    @PostMapping("/add")
-    public String addRoom(@ModelAttribute("roomToAdd") Room room) {
-        roomService.save(room);
+    @PostMapping
+    public String addRoom(@ModelAttribute("roomToAdd") Room room, Errors errors) {
+        roomValidator.validate(room, errors);
+        if (!errors.hasErrors()) {
+            roomService.save(room);
+        }
         return redirectToHotelRooms(room.getHotelId());
     }
 
