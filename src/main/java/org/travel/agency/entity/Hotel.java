@@ -29,7 +29,7 @@ public class Hotel {
     private String country;
 
     @OneToMany
-    @JoinColumn(name = "hotel_id")
+    @JoinColumn(name = "hotel_id", insertable = false, updatable = false)
     private Set<Room> rooms;
 
 }
