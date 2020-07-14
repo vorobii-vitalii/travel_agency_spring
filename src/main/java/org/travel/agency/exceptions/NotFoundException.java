@@ -1,6 +1,7 @@
 package org.travel.agency.exceptions;
 
 public class NotFoundException extends RuntimeException {
+
     public NotFoundException() {
         super();
     }
