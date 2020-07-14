@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -23,5 +24,12 @@ public class Room {
 
     @Column(name = "hotel_id", nullable = false)
     private Long hotelId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "hotel_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private Hotel hotel;
+
+    @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)
+    private Set<Order> orders;
 
 }
