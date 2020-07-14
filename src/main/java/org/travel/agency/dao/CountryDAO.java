@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface CountryDAO {
     List<Country> findAll();
     Optional<Country> findByName(String countryName);
+    void save(Country countryToSave);
 }

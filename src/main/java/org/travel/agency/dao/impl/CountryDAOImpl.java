@@ -31,4 +31,10 @@ public class CountryDAOImpl implements CountryDAO {
                 .setParameter("name", countryName)
                 .uniqueResultOptional();
     }
+
+    @Override
+    public void save(Country countryToSave) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(countryToSave);
+    }
 }
