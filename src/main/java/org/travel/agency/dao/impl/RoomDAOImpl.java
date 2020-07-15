@@ -35,7 +35,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public List<Room> findAllByHotelIdAndDateBetween(Long hotelId, LocalDate dateFrom, LocalDate dateTill) {
+    public List<Room> findAllByHotelIdAndDateBeyond(Long hotelId, LocalDate dateFrom, LocalDate dateTill) {
         Session session = sessionFactory.getCurrentSession();
         return session
                 .createQuery(
