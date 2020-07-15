@@ -14,6 +14,7 @@ import org.travel.agency.config.HibernateConfig;
 import org.travel.agency.config.WebConfig;
 import org.travel.agency.entity.Country;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -36,10 +37,9 @@ public class CountryDAOTest {
 
     @Before
     public void init() {
-        List<Country> initData = List.of (
-                countryByName("Ukraine"),
-                countryByName("Russia")
-        );
+        List<Country> initData = new ArrayList<>();
+        initData.add(countryByName("Ukraine"));
+        initData.add(countryByName("Russia"));
         for (Country country : initData) {
             countryDAO.save(country);
             lastIndex = country.getId();
