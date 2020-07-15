@@ -70,7 +70,7 @@ public class HibernateConfig {
     }
 
     /**
-     * The method stands for creating sessions
+     * The method stands for creating sessions factory
      * as well as setting up packages to scan
      */
     @Bean
@@ -82,6 +82,11 @@ public class HibernateConfig {
         return sessionFactory;
     }
 
+    /**
+     * Set-up transaction manager to use @Transactional annotation in further
+     * @see HibernateTransactionManager
+     * @see org.springframework.transaction.annotation.Transactional
+     */
     @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
