@@ -1,6 +1,7 @@
 package org.travel.agency.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,15 +21,16 @@ public class AuthController {
     private final AuthService authService;
     private final SecurityService securityService;
     private final UserValidator userValidator;
+    private final Environment env;
 
     @GetMapping("/login")
     public ModelAndView showLoginForm(String error, String logout) {
         ModelAndView modelAndView = new ModelAndView("login");
         if (error != null) {
-            modelAndView.addObject("error", "Credentials are incorrect");
+            modelAndView.addObject("error", env.getProperty("error.credentials.incorrect"));
         }
         if (logout != null) {
-            modelAndView.addObject("message", "You have successfully logged out");
+            modelAndView.addObject("message", env.getProperty("message.logout.success"));
         }
         return modelAndView;
     }
