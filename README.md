@@ -31,7 +31,7 @@ It is an SQL script that creates schema pictured below.
 
 ![Alt text](travel_agency.png?raw=true "DB Schema") 
 
-2. In the resources package you will see _db_e.properties_ file. 
+2. In the resources package you will see _db_example.properties_ file. 
 It's an example of **_db.properties_** file that _must_ be created in the same package.
 
 3. Just for convenience I have added TestDBConnection class, that expects JDBC url, username and password to verify connection.
