@@ -23,6 +23,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService customUserDetailsService;
     private final Environment env;
 
+    /**
+     * As we are interacting with DAO directly in custom UserDetailsService
+     * the service is wrapped in proxy object
+     * Hence - we are forced to autowire service by name
+     * @see UserDetailsService
+     */
     public SecurityConfig(@Qualifier("customUserDetailsService") UserDetailsService customUserDetailsService, Environment env) {
         this.customUserDetailsService = customUserDetailsService;
         this.env = env;
