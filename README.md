@@ -5,7 +5,7 @@ Stack of technologies:
 2. Hibernate
 3. MySQL
 4. SLF4J
-5. Templating engine - JSP/JSTL (+ Twitter Bootstrap library)
+5. Templating engine - JSP/JSTL (+ Twitter Bootstrap library for a consistent UI)
 6. Lombok (to get rid of boiler-plate code)
 7. Maven
 8. jUnit 4
@@ -23,7 +23,6 @@ as well as adding new hotels and attach rooms to them.
 
 **Customer** can book view the hotels and book rooms in a certain room, that is not busy at mentioned period.
 
-
 Instruction:
 1. In a root package of the project there is a file **_init.sql_**.
 It is an SQL script that creates schema pictured below.
@@ -39,4 +38,4 @@ It's an example of **_db.properties_** file that _must_ be created in the same p
 
 4. If you wish, you can execute data.sql script as well to prepopulate roles and countries in a database.
 
-Application has been successfully run and manually tested using Tomcat server.
+Application has been successfully run and manually tested using **_Tomcat server_**.
