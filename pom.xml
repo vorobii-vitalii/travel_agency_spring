@@ -20,7 +20,7 @@
     <hibernate.version>5.4.4.Final</hibernate.version>
     <mysql.connector.version>8.0.17</mysql.connector.version>
     <c3po.version>0.9.5.2</c3po.version>
-    <sl4j.version>2.7</sl4j.version>
+    <sl4j.version>2.16.0</sl4j.version>
     <junit.version>4.13</junit.version>
   </properties>
 
